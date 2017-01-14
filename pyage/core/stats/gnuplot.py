@@ -31,7 +31,8 @@ class StepStatistics(Statistics):
             if (step_count - 1) % 100 == 0:
                 self.append(best_fitness, step_count)
                 print step_count,";", best_fitness
-        except:
+        except Exception as e:
+            print e
             logging.exception("")
 
     def summarize(self, agents):
@@ -43,8 +44,8 @@ class StepStatistics(Statistics):
             plt.savefig(self.output_file_name.replace("txt","png"))
             self.fitness_output.write("best genotype:\n%s" % best_genotype)
         except Exception as e:
-            logging.exception(e)
             print e
+            logging.exception(e)
 
 
 class TimeStatistics(StepStatistics):

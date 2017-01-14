@@ -44,6 +44,7 @@ migration_minimum = lambda: 120
 newborn_energy = lambda: 100
 transferred_energy = lambda: 40
 
+#(self, k, price_func, budget, initial_vote_places, candidate=1, type=None)
 evaluation = lambda: kApprovalEvaluator(2, [lambda x: abs(x) * 10] * votes_nr, 50, [4, 4, 4, 0, 1, 2])
 crossover = lambda: Crossover(size=50)
 mutation = lambda: Mutation(probability=0.2, evol_probability=0.5)
@@ -53,6 +54,8 @@ address_provider = address.SequenceAddressProvider
 migration = ParentMigration
 locator = GridLocator
 
-stats = lambda: StepStatistics('fitness_%s_pyage.txt' % __name__)
+description = "trial"
+fileName = 'fitness_%s_pyage_%s.txt' % (__name__,description)
+stats = lambda: StepStatistics(fileName)
 
 naming_service = lambda: NamingService(agents_count)

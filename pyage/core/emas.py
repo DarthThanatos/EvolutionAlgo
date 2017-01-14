@@ -28,7 +28,8 @@ class EmasAgent(Addressable):
                     self.meet(neighbour)
                 if self.emas.can_migrate(self):
                     self.migration.migrate(self)
-        except:
+        except Exception as e:
+            print e
             logging.exception("")
 
     def get_fitness(self):
