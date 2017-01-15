@@ -47,6 +47,28 @@ class StepStatistics(Statistics):
             print e
             logging.exception(e)
 
+class GraphStatistics(StepStatistics):
+    def __init__(self,output_file_name='fitness_pyage.txt'):
+        super(GraphStatistics,self).__init__(output_file_name)
+
+    def summarize(self, agents):
+        try:
+            logger.debug(self.history)
+            best_agent = max(agents, key=lambda a: a.get_fitness())
+            best_genotype = best_agent.get_best_genotype()
+            plt.plot(self.times, self.history)
+            plt.savefig(self.output_file_name.replace("txt","png"))
+            self.fitness_output.write("best genotype:\n%s" % best_genotype.toString())
+            best_route = best_agent.get_best_genotype().route
+            plt.clf()
+            plt.plot([p.x for p in best_route], [p.y for p in best_route], 'ro')  # drawing vertices
+            for i in range(len(best_route)): # drawing edges
+                plt.plot([best_route[i].x, best_route[(i + 1)  % len(best_route)].x], [best_route[i].y, best_route[(i + 1)  % len(best_route)].y], lw=1, c="b")
+            plt.savefig(self.output_file_name.replace(".txt","_paths.png"))
+        except Exception as e:
+            print e
+            logging.exception(e)
+
 
 class TimeStatistics(StepStatistics):
     def __init__(self, output_file_name='fitness_pyage.txt'):

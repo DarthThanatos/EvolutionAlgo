@@ -34,7 +34,7 @@ agents_count = 2
 logger.debug("EMAS, %s agents", agents_count)
 agents = root_agents_factory(agents_count, AggregateAgent)
 
-stop_condition = lambda: StepLimitStopCondition(20000)
+stop_condition = lambda: StepLimitStopCondition(50)
 
 agg_size = 40
 aggregated_agents = EmasInitializer(votes=votes, candidate = chosen_candidate, size=agg_size, energy=40 )
