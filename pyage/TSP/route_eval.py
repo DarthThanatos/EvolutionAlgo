@@ -20,4 +20,4 @@ class DistanceEvaluator(Operator):
     def evaluate(self, genotype):
         P = genotype.route
         dist = lambda p1, p2: Point(p2.x, p2.y, p1.d + sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2))
-        return reduce(dist,P).d
+        return - reduce(dist,P).d

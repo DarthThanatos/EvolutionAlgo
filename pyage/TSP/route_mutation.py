@@ -41,7 +41,7 @@ class RouteConsecutiveMutation(AbstractMutation):
         P = genotype.route
         points_to_swap = []
         points_to_swap.append(choice(P))
-        points_to_swap.append((P[P.index(points_to_swap)+1] if P.index(points_to_swap)+1 < len(P) else P[P.index(points_to_swap)-1]))
+        points_to_swap.append((P[P.index(points_to_swap[0])+1] if P.index(points_to_swap[0])+1 < len(P) else P[P.index(points_to_swap[0])-1]))
         #swapping consecutive points in route
         i,j = P.index(points_to_swap[0]), P.index(points_to_swap[1])
         P[i], P[j] = P[j], P[i]
