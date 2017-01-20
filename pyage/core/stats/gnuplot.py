@@ -63,8 +63,10 @@ class GraphStatistics(StepStatistics):
             plt.clf()
             plt.plot([p.x for p in best_route], [p.y for p in best_route], 'ro')  # drawing vertices
             for i in range(len(best_route)): # drawing edges
+                print(best_route[i].toString())
                 plt.plot([best_route[i].x, best_route[(i + 1)  % len(best_route)].x], [best_route[i].y, best_route[(i + 1)  % len(best_route)].y], lw=1, c="b")
             plt.savefig(self.output_file_name.replace(".txt","_paths.png"))
+            print best_route.__len__()
         except Exception as e:
             print e
             logging.exception(e)

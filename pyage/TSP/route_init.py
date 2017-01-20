@@ -73,7 +73,9 @@ class RouteClusterInitializer(object):
                 x = randrange(int(cluster.x - self.min_dist / 4.0), int(cluster.x + self.min_dist / 4.0))
                 y = randrange(int(cluster.y - self.min_dist / 4.0), int(cluster.y + self.min_dist / 4.0))
                 surrounding_points.append(Point(x, y, 0))
+        print (clusters + surrounding_points).__len__()
         return clusters + surrounding_points  # 9 sets of (N + 1)-element-clusters
+
 
     def generate_cluster_coord(self, starting_margin):
         clusters_coords = [randrange(starting_margin)]

@@ -25,5 +25,6 @@ class RouteCrossover(AbstractCrossover):
     def cross(self, p1, p2):
         logger.debug("Crossing:\n{0}\nAND\n{1}".format(p1, p2))
         division = random.randint(1, len(p1.route)-2)
-        new_route = p1.route[:division] + p2.route[division:]
+        parent = random.choice([p1,p2])
+        new_route = parent.route[:division] + parent.route[division:]
         return Route(new_route)
